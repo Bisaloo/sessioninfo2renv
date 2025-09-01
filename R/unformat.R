@@ -3,6 +3,12 @@
 unformat_session_info <- function(file) {
   x <- readLines(file)
 
+  if (all(startsWith(x, "#>"))) {
+    file <- withr::local_tempfile()
+    x <- gsub("^#> ?", "", x)
+    writeLines(x, con = file, sep = "\n")
+  }
+
   platform_section <- grep("^─ Session info ─", x)
   packages_section <- grep("^─ Packages ─", x)
   footnotes <- grep("^$", x)
