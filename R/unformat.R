@@ -32,7 +32,7 @@ unformat_session_info <- function(file) {
 
 
   packages_header <- x[packages_section + 1]
-  colstarts <- regexec(" (!) (package)\\s+(\\*)\\s+(version)\\s+(date \\(UTC\\))\\s+(lib)\\s+(source)", packages_header)[[1]]
+  colstarts <- regexec("\\s+(!?)\\s*(package)\\s+(\\*)\\s+(version)\\s+(date \\(UTC\\)|date)\\s+(lib)\\s+(source)", packages_header)[[1]]
 
   packages <- read.fwf(
     file = file,
