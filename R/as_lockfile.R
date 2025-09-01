@@ -37,9 +37,19 @@ as_lockfile.session_info <- function(x, lockfile = stdout(), ...) {
         gsub(".*@([a-f0-9]+).*", "\\1", source),
         NA_character_
       ),
-      RemotesPkgRef = dplyr::if_else(
+      RemotePkgRef = dplyr::if_else(
         Source == "GitHub",
         gsub("Github \\(([^@]+)@.*", "\\1", source),
+        NA_character_
+      ),
+      RemoteUsername = dplyr::if_else(
+        Source == "GitHub",
+        gsub("Github \\(([^/]+)/.*", "\\1", source),
+        NA_character_
+      ),
+      RemoteRepo = dplyr::if_else(
+        Source == "GitHub",
+        gsub("Github \\([^/]+/([^@]+)@.*", "\\1", source),
         NA_character_
       )
     )
