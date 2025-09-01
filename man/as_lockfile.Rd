@@ -8,6 +8,8 @@ as_lockfile(x, ...)
 }
 \arguments{
 \item{x}{An object to convert}
+
+\item{...}{Additional arguments passed to methods}
 }
 \description{
 Convert an object to an renv lockfile

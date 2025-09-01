@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{x}{An object to convert}
+
+\item{...}{Additional arguments passed to methods}
 }
 \description{
 \code{session_info} objects are produced by the \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}}

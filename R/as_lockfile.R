@@ -1,5 +1,7 @@
 #' Convert an object to an renv lockfile
+#'
 #' @param x An object to convert
+#' @param ... Additional arguments passed to methods
 #'
 #' @export
 as_lockfile <- function(x, ...) {
