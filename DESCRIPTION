@@ -1,21 +1,29 @@
-Package: packagetemplate
-Title: Your Package Title in Titlecase
+Package: sessioninfo2renv
+Title: Convert session info to a Lockfile
 Version: 0.0.1
 Authors@R: c(
-    person("Hugo", "Gruson", , "hugo@data.org", role = c("aut", "cre"),
+    person("Hugo", "Gruson", , "hugo.gruson+R@normalesup.org",
+           role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4094-1476"))
   )
-Description: Your package description. It must end with a period (".") and
-    include relevant bibliographical references if applicable, using the
-    following format: Author et al. (2023) <doi:10.5281/zenodo.6619350>.
+Description: Convert session info (base or tidyverse version) object or printed
+    output into an 'renv' lockfile.
 License: MIT + file LICENSE
 Depends:
-    R (>= 4.0.0)
+    R (>= 4.1.0)
+Imports:
+    dplyr,
+    jsonlite,
+    purrr,
+    rlang
 Suggests:
     knitr,
+    renv,
     rmarkdown,
+    sessioninfo,
     spelling,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    withr
 VignetteBuilder:
     knitr
 Config/testthat/edition: 3
