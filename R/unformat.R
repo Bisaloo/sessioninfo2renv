@@ -1,4 +1,4 @@
-#̈́' @examples
+#' @examples
 #' file <- system.file("extdata", "sessioninfo.txt", package = "sessioninfo")
 unformat_session_info <- function(file) {
   x <- readLines(file)
