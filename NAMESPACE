@@ -2,3 +2,5 @@
 
 S3method(as_lockfile,session_info)
 export(as_lockfile)
+importFrom(stats,setNames)
+importFrom(utils,read.fwf)
