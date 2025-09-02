@@ -5,3 +5,5 @@ options(
   warnPartialMatchDollar = TRUE,
   warnPartialMatchArgs = TRUE
 )
+
+Sys.setenv(NO_COLOR = "true") # to disable cli colour printing
