@@ -5,6 +5,9 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/Bisaloo/sessioninfo2renv/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Bisaloo/sessioninfo2renv/actions/workflows/R-CMD-check.yaml)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 Software users and researchers are encouraged to provide information
@@ -32,7 +35,7 @@ pak::pak("Bisaloo/sessioninfo2renv")
 
 ## Example
 
-Let’s see this action!
+Let’s see this in action!
 
 For this, we are going to use a real session info output that was
 attached to a reprex in ggplot2:
