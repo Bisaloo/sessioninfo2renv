@@ -60,7 +60,7 @@ unformat_session_info <- function(file) {
   packages$path <- "placeholder"
   packages$loadedpath <- "placeholder"
 
-  packages <- packages[, !colnames(packages) %in% c("skip", "warn", "lib")]
+  packages <- packages[, c("package", "ondiskversion", "loadedversion", "path", "loadedpath", "attached", "is_base", "date", "source", "md5ok", "library")]
   rownames(packages) <- packages$package
   class(packages) <- c("packages_info", "data.frame")
 
