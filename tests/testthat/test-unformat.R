@@ -8,5 +8,5 @@ test_that("unformat session_info()", {
 
   recovered_si <- unformat_session_info(p)
 
-  expect_identical(si, recovered_si)
+  expect_identical(recovered_si, si)
 })
