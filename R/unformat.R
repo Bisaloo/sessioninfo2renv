@@ -22,8 +22,8 @@ unformat_session_info <- function(file) {
     writeLines(x, con = file, sep = "\n")
   }
 
-  platform_section <- grep("^─ Session info ─", x)
-  packages_section <- grep("^─ Packages ─", x)
+  platform_section <- grep("^[[:punct:]] Session info [[:punct:]]", x)
+  packages_section <- grep("^[[:punct:]] Packages [[:punct:]]", x)
   footnotes <- grep("^$", x)
 
   platform_header <- x[platform_section + 1]
