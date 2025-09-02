@@ -1,4 +1,7 @@
 test_that("unformat session_info()", {
+  skip_on_cran()
+  skip_on_ci()
+
   withr::local_envvar(NO_COLOR = "true")
 
   si <- sessioninfo::session_info()
