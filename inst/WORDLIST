@@ -1,7 +1,10 @@
 Lockfile
 ORCID
+ggplot
 lockfile
 packagetemplate
 renv
+reprex
 sessioninfo
 tidyverse
+unprint
