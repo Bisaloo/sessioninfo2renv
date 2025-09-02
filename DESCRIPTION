@@ -33,3 +33,5 @@ Encoding: UTF-8
 Language: en-GB
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+URL: http://hugogruson.fr/sessioninfo2renv/, https://github.com/Bisaloo/sessioninfo2renv
+BugReports: https://github.com/Bisaloo/sessioninfo2renv/issues
