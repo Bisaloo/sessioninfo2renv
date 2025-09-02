@@ -11,7 +11,7 @@ test_that("as_lockfile() session_info method", {
     {
       as_lockfile(sessioninfo::session_info(), lockfile = lockfile)
       expect_true(file.exists(lockfile))
-      expect_true(renv::lockfile_validate(lockfile))
+      expect_true(renv::lockfile_validate(lockfile = lockfile))
     }
   )
 })
