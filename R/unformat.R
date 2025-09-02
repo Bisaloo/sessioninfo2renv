@@ -27,7 +27,7 @@ unformat_session_info <- function(file) {
   footnotes <- grep("^$", x)
 
   platform_header <- x[platform_section + 1]
-  colstarts <- regexec(" (setting)\\s+(value)", platform_header)[[1]]
+  colstarts <- regexec(" (setting)[[:space:]]+(value)", platform_header)[[1]]
 
   # FIXME: I would expect we can get the header by skipping one line less and
   # setting `header = TRUE` but it does not work.
@@ -35,7 +35,7 @@ unformat_session_info <- function(file) {
     file = file,
     widths = c(diff(colstarts), 50),
     skip = platform_section + 1,
-    n = packages_section - platform_section - 3,
+    n = packages_section - platform_section - 3
   )
   platform <- setNames(
     as.list(platform[, 3]),
@@ -53,7 +53,7 @@ unformat_session_info <- function(file) {
   ))
 
   libs <- libs[startsWith(libs, "[")]
-  libs <- strsplit(libs, " ")
+  libs <- strsplit(libs, " ", fixed = TRUE)
   libs <- do.call(rbind, libs)
   libs <- as.data.frame(libs, stringsAsFactors = TRUE)
   colnames(libs) <- c("num", "path")

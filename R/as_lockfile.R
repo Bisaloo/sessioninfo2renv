@@ -17,42 +17,44 @@ as_lockfile <- function(x, lockfile, ...) {
 #'
 #' @inheritParams as_lockfile
 #'
+#' @importFrom rlang .data
+#'
 #' @export
 as_lockfile.session_info <- function(x, lockfile = stdout(), ...) {
 
   pkgs <- x$packages |>
     dplyr::transmute(
-      Package = package,
-      Version = loadedversion,
+      Package = .data$package,
+      Version = .data$loadedversion,
       Source = dplyr::case_when(
         startsWith(source, "RSPM") ~ "Repository",
         startsWith(source, "Bioconductor") ~ "Bioconductor",
         startsWith(source, "Github") ~ "GitHub",
         startsWith(source, "CRAN") ~ "Repository",
-        source == "local" ~ "local",
+        source == "local" ~ "local"
       ),
       Repository = dplyr::if_else(
-        Source == "Repository",
+        .data$Source == "Repository",
         gsub("^([^ ]+) ?.*", "\\1", source),
         NA_character_
       ),
       RemoteSha = dplyr::if_else(
-        Source == "GitHub",
+        .data$Source == "GitHub",
         gsub(".*@([a-f0-9]+).*", "\\1", source),
         NA_character_
       ),
       RemotePkgRef = dplyr::if_else(
-        Source == "GitHub",
+        .data$Source == "GitHub",
         gsub("Github \\(([^@]+)@.*", "\\1", source),
         NA_character_
       ),
       RemoteUsername = dplyr::if_else(
-        Source == "GitHub",
+        .data$Source == "GitHub",
         gsub("Github \\(([^/]+)/.*", "\\1", source),
         NA_character_
       ),
       RemoteRepo = dplyr::if_else(
-        Source == "GitHub",
+        .data$Source == "GitHub",
         gsub("Github \\([^/]+/([^@]+)@.*", "\\1", source),
         NA_character_
       )
@@ -77,7 +79,7 @@ as_lockfile.session_info <- function(x, lockfile = stdout(), ...) {
 
   lock <- list(
     R = list(
-      Version = gsub("R version (\\d+\\.\\d+.\\d+).*", "\\1", x$platform$version),
+      Version = gsub("R version (\\d+\\.\\d+\\.\\d+).*", "\\1", x$platform$version),
       # FIXME: this takes the values from the 'receiver' computer but we should
       # ideally take them from the 'sender' computer.
       # Problem: session_info() does not provide this information but renv

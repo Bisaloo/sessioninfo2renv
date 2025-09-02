@@ -3,5 +3,6 @@
 S3method(as_lockfile,session_info)
 export(as_lockfile)
 export(unformat_session_info)
+importFrom(rlang,.data)
 importFrom(stats,setNames)
 importFrom(utils,read.fwf)
