@@ -51,16 +51,16 @@ unformat_session_info <- function(file) {
   colnames(packages) <- c("skip", "warn", "package", "attached", "loadedversion", "date", "lib", "source")
   packages <- as.data.frame(vapply(packages, trimws, character(nrow(packages))))
   packages$attached <- packages$attached == "*"
-  packages <- packages[, !colnames(packages) %in% c("skip", "warn", "lib")]
 
   # Guess
   packages$library <- gsub("^\\[(\\d+)\\]\\s*", "\\1", packages$lib)
   packages$ondiskversion <- packages$loadedversion
-    packages$md5ok <- NA
+  packages$md5ok <- NA
   packages$is_base <- FALSE
   packages$path <- "placeholder"
   packages$loadedpath <- "placeholder"
 
+  packages <- packages[, !colnames(packages) %in% c("skip", "warn", "lib")]
   rownames(packages) <- packages$package
   class(packages) <- c("packages_info", "data.frame")
 
