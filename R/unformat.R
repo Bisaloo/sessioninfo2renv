@@ -55,8 +55,9 @@ unformat_session_info <- function(file) {
   libs <- libs[startsWith(libs, "[")]
   libs <- strsplit(libs, " ", fixed = TRUE)
   libs <- do.call(rbind, libs)
-  libs <- as.data.frame(libs, stringsAsFactors = TRUE)
+  libs <- as.data.frame(libs, stringsAsFactors = FALSE)
   colnames(libs) <- c("num", "path")
+  libs$path <- factor(libs$path, levels = unique(libs$path))
 
   packages_header <- x[packages_section + 1]
   colstarts <- regexec("\\s+(!?)\\s*(package)\\s+(\\*)\\s+(version)\\s+(date \\(UTC\\)|date)\\s+(lib)\\s+(source)", packages_header)[[1]]
