@@ -61,6 +61,7 @@ unformat_session_info <- function(file) {
   packages$path <- "placeholder"
   packages$loadedpath <- "placeholder"
 
+  rownames(packages) <- packages$package
   class(packages) <- c("packages_info", "data.frame")
 
   structure(
