@@ -36,7 +36,7 @@ unformat_session_info <- function(file) {
     as.list(platform[, 3]),
     trimws(platform[, 2])
   )
-  class(platform) <- c("platform_info")
+  class(platform) <- c("platform_info", "list")
 
 
   packages_header <- x[packages_section + 1]
@@ -68,6 +68,6 @@ unformat_session_info <- function(file) {
       platform = platform,
       packages = packages
     ),
-    class = "session_info"
+    class = c("session_info", "list")
   )
 }
