@@ -70,6 +70,9 @@ as_lockfile.session_info <- function(x, lockfile = stdout(), ...) {
   pkgs <- pkgs |>
     purrr::transpose() |>
     rlang::set_names(pkgs$Package) |>
+    # Some fields are NA (e.g., RemoteRepo for CRAN packages) as required to
+    # keep the data.frame rectangular. But in a list, we don't need all elements
+    # to have the same fields, so we drop the NA fields.
     purrr::map(~ purrr::discard(.x, is.na))
 
   lock <- list(
