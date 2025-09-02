@@ -1,0 +1,70 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# sessioninfo2renv
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Software users and researchers are encouraged to provide information about their R session in order to facilitate reproducibility and help with debugging.
+The [sessioninfo R package](https://sessioninfo.r-lib.org/) provides a convenient way to gather and display this information.
+However, it can be tedious to locally recreate the R environment of another user based on the output of `sessioninfo::session_info()` output.
+
+The `sessioninfo2renv` package provides a function to convert the output of `sessioninfo::session_info()` to a lockfile (`renv.lock`) that can be used by the [renv R package](https://pkgs.rstudio.com/renv/) to recreate the R environment.
+
+## Installation
+
+You can install the development version of sessioninfo2renv from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("Bisaloo/sessioninfo2renv")
+```
+
+## Example
+
+Let's see this action!
+
+For this, we are going to use a real session info output that was attached to
+a reprex in ggplot2:
+
+```{r}
+library(sessioninfo2renv)
+
+example_sessioninfo <- system.file("extdata", "session_info.txt", package = "sessioninfo2renv")
+
+cat(readLines(example_sessioninfo), sep = "\n")
+```
+
+We can "unprint" this output and get back a `session_info` object with the
+`unformat_session_info()` function:
+
+```{r}
+session_info_obj <- unformat_session_info(example_sessioninfo)
+```
+
+This `session_info` object can then be converted to a lockfile with the
+`as_lockfile()` function:
+
+```{r, eval = FALSE}
+as_lockfile(session_info_obj, lockfile = "renv.lock")
+```
+
+Finally, this lockfile can be passed to `renv::restore()` to recreate the R
+environment:
+
+```{r, eval = FALSE}
+renv::restore(lockfile = "renv.lock")
+```
