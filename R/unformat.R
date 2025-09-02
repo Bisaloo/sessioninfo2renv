@@ -5,6 +5,8 @@
 #' @importFrom stats setNames
 #' @importFrom utils read.fwf
 #'
+#' @export
+#'
 #' @examples
 #' file <- system.file("extdata", "session_info.txt", package = "sessioninfo2renv")
 #' unformat_session_info(file)
