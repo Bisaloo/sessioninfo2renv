@@ -41,7 +41,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as_lockfile</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as_lockfile</span><span class="op">(</span><span class="va">x</span>, <span class="va">lockfile</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -50,6 +50,15 @@
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>An object to convert</p></dd>
+
+
+<dt id="arg-lockfile">lockfile<a class="anchor" aria-label="anchor" href="#arg-lockfile"></a></dt>
+<dd><p>A file path to write the lockfile to. If <code><a href="https://rdrr.io/r/base/showConnections.html" class="external-link">stdout()</a></code> (the
+default), the lockfile is printed to the console.</p></dd>
+
+
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Additional arguments passed to methods</p></dd>
 
 </dl></div>
 
