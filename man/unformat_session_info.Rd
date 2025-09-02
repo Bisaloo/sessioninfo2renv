@@ -12,3 +12,7 @@ unformat_session_info(file)
 \description{
 Get a \code{session_info} object from its printed representation
 }
+\examples{
+file <- system.file("extdata", "sessioninfo.txt", package = "sessioninfo")
+
+}

@@ -2,12 +2,12 @@
 #'
 #' @param file A file path to a text file containing the output of
 #'
-#' @examples
-#'
 #' @importFrom stats setNames
 #' @importFrom utils read.fwf
 #'
+#' @examples
 #' file <- system.file("extdata", "sessioninfo.txt", package = "sessioninfo")
+#'
 unformat_session_info <- function(file) {
   x <- readLines(file)
 
