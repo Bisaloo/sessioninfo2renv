@@ -13,7 +13,6 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Convert session info to a Lockfile">
 <meta name="description" content="Convert session info (base or tidyverse version) object or printed output into an renv lockfile.">
 <meta property="og:description" content="Convert session info (base or tidyverse version) object or printed output into an renv lockfile.">
-<meta property="og:image" content="http://hugogruson.fr/sessioninfo2renv/logo.svg">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -36,7 +35,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/design-principles.html">Design Principles for {packagetemplate}</a></li>
+<li><a class="dropdown-item" href="articles/design-principles.html">Design Principles for sessioninfo2renv</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -54,10 +53,8 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header">
-<img src="logo.svg" class="logo" alt=""><h1 id="sessioninfo2renv">sessioninfo2renv<a class="anchor" aria-label="anchor" href="#sessioninfo2renv"></a>
-</h1>
-</div>
+<div class="page-header"><h1 id="sessioninfo2renv">sessioninfo2renv<a class="anchor" aria-label="anchor" href="#sessioninfo2renv"></a>
+</h1></div>
 <!-- badges: start -->
 
 <p>Software users and researchers are encouraged to provide information about their R session in order to facilitate reproducibility and help with debugging. The <a href="https://sessioninfo.r-lib.org/" class="external-link">sessioninfo R package</a> provides a convenient way to gather and display this information. However, it can be tedious to locally recreate the R environment of another user based on the output of <code><a href="https://sessioninfo.r-lib.org/reference/session_info.html" class="external-link">sessioninfo::session_info()</a></code> output.</p>
