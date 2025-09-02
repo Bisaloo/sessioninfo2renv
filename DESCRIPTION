@@ -17,6 +17,7 @@ Imports:
     purrr,
     rlang
 Suggests:
+    jsonvalidate,
     knitr,
     renv,
     rmarkdown,
