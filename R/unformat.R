@@ -9,7 +9,9 @@
 #'
 #' @examples
 #' file <- system.file("extdata", "session_info.txt", package = "sessioninfo2renv")
-#' unformat_session_info(file)
+#' si <- unformat_session_info(file)
+#' class(si)
+#' print(si)
 #'
 unformat_session_info <- function(file) {
   x <- readLines(file)
