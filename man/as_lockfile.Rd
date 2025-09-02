@@ -4,10 +4,13 @@
 \alias{as_lockfile}
 \title{Convert an object to an renv lockfile}
 \usage{
-as_lockfile(x, ...)
+as_lockfile(x, lockfile, ...)
 }
 \arguments{
 \item{x}{An object to convert}
+
+\item{lockfile}{A file path to write the lockfile to. If \code{stdout()} (the
+default), the lockfile is printed to the console.}
 
 \item{...}{Additional arguments passed to methods}
 }

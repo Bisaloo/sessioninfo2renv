@@ -1,10 +1,12 @@
 #' Convert an object to an renv lockfile
 #'
 #' @param x An object to convert
+#' @param lockfile A file path to write the lockfile to. If `stdout()` (the
+#'   default), the lockfile is printed to the console.
 #' @param ... Additional arguments passed to methods
 #'
 #' @export
-as_lockfile <- function(x, ...) {
+as_lockfile <- function(x, lockfile, ...) {
   UseMethod("as_lockfile")
 }
 
