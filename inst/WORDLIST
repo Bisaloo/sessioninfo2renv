@@ -1,8 +1,9 @@
+CMD
+Lifecycle
 Lockfile
 ORCID
 ggplot
 lockfile
-packagetemplate
 renv
 reprex
 sessioninfo
