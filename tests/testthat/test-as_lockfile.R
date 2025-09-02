@@ -1,6 +1,9 @@
 test_that("as_lockfile() session_info method", {
   expect_output(
-    as_lockfile(sessioninfo::session_info())
+    expect_warning(
+      as_lockfile(sessioninfo::session_info()),
+      "local"
+    )
   )
 
   # Produces:
@@ -9,7 +12,10 @@ test_that("as_lockfile() session_info method", {
   withr::with_tempfile(
     "lockfile",
     {
-      as_lockfile(sessioninfo::session_info(), lockfile = lockfile)
+      expect_warning(
+        as_lockfile(sessioninfo::session_info(), lockfile = lockfile),
+        "local"
+      )
       expect_true(file.exists(lockfile))
       expect_true(renv::lockfile_validate(lockfile = lockfile))
     }
