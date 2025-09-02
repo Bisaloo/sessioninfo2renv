@@ -1,16 +1,16 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
-<url><loc>/404.html</loc></url>
-<url><loc>/LICENSE-text.html</loc></url>
-<url><loc>/LICENSE.html</loc></url>
-<url><loc>/articles/design-principles.html</loc></url>
-<url><loc>/articles/index.html</loc></url>
-<url><loc>/authors.html</loc></url>
-<url><loc>/index.html</loc></url>
-<url><loc>/news/index.html</loc></url>
-<url><loc>/reference/as_lockfile.html</loc></url>
-<url><loc>/reference/as_lockfile.session_info.html</loc></url>
-<url><loc>/reference/index.html</loc></url>
-<url><loc>/reference/sessioninfo2renv-package.html</loc></url>
-<url><loc>/reference/unformat_session_info.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/404.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/LICENSE-text.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/LICENSE.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/articles/design-principles.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/articles/index.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/authors.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/index.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/news/index.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/reference/as_lockfile.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/reference/as_lockfile.session_info.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/reference/index.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/reference/sessioninfo2renv-package.html</loc></url>
+<url><loc>http://hugogruson.fr/sessioninfo2renv/reference/unformat_session_info.html</loc></url>
 </urlset>
 
