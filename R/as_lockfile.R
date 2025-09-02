@@ -56,6 +56,15 @@ as_lockfile.session_info <- function(x, lockfile = stdout(), ...) {
       )
     )
 
+  if (any(pkgs$Source == "local")) {
+    warning(
+      "Some packages were installed from local sources which is not fully ",
+      "reproducible. They will be dropped from the lockfile.",
+      call. = FALSE
+    )
+    pkgs <- pkgs[pkgs$Source != "local", ]
+  }
+
   pkgs <- pkgs |>
     purrr::transpose() |>
     rlang::set_names(pkgs$Package) |>
