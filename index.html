@@ -52,8 +52,119 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9">
-Convert session info (base or tidyverse version) object or printed output into an 'renv' lockfile.
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header">
+<img src="logo.svg" class="logo" alt=""><h1 id="sessioninfo2renv">sessioninfo2renv<a class="anchor" aria-label="anchor" href="#sessioninfo2renv"></a>
+</h1>
+</div>
+<!-- badges: start -->
+<!-- badges: end -->
+<p>Software users and researchers are encouraged to provide information about their R session in order to facilitate reproducibility and help with debugging. The <a href="https://sessioninfo.r-lib.org/" class="external-link">sessioninfo R package</a> provides a convenient way to gather and display this information. However, it can be tedious to locally recreate the R environment of another user based on the output of <code><a href="https://sessioninfo.r-lib.org/reference/session_info.html" class="external-link">sessioninfo::session_info()</a></code> output.</p>
+<p>The <code>sessioninfo2renv</code> package provides a function to convert the output of <code><a href="https://sessioninfo.r-lib.org/reference/session_info.html" class="external-link">sessioninfo::session_info()</a></code> to a lockfile (<code>renv.lock</code>) that can be used by the <a href="https://pkgs.rstudio.com/renv/" class="external-link">renv R package</a> to recreate the R environment.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the development version of sessioninfo2renv from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"Bisaloo/sessioninfo2renv"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<p>Let’s see this action!</p>
+<p>For this, we are going to use a real session info output that was attached to a reprex in ggplot2:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">sessioninfo2renv</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">example_sessioninfo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"session_info.txt"</span>, package <span class="op">=</span> <span class="st">"sessioninfo2renv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">example_sessioninfo</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; #&gt; ─ Session info ───────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; #&gt;  setting  value</span></span>
+<span><span class="co">#&gt; #&gt;  version  R version 4.3.3 (2024-02-29 ucrt)</span></span>
+<span><span class="co">#&gt; #&gt;  os       Windows 10 x64 (build 19044)</span></span>
+<span><span class="co">#&gt; #&gt;  system   x86_64, mingw32</span></span>
+<span><span class="co">#&gt; #&gt;  ui       RTerm</span></span>
+<span><span class="co">#&gt; #&gt;  language (EN)</span></span>
+<span><span class="co">#&gt; #&gt;  collate  English_Europe.utf8</span></span>
+<span><span class="co">#&gt; #&gt;  ctype    English_Europe.utf8</span></span>
+<span><span class="co">#&gt; #&gt;  tz       Europe/Paris</span></span>
+<span><span class="co">#&gt; #&gt;  date     2024-03-26</span></span>
+<span><span class="co">#&gt; #&gt;  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)</span></span>
+<span><span class="co">#&gt; #&gt;</span></span>
+<span><span class="co">#&gt; #&gt; ─ Packages ───────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; #&gt;  ! package     * version    date (UTC) lib source</span></span>
+<span><span class="co">#&gt; #&gt;  D class         7.3-22     2023-05-03 [1] CRAN (R 4.3.3)</span></span>
+<span><span class="co">#&gt; #&gt;    classInt      0.4-10     2023-09-05 [1] CRAN (R 4.3.1)</span></span>
+<span><span class="co">#&gt; #&gt;    cli           3.6.2      2023-12-11 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    colorspace    2.1-0      2023-01-23 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    curl          5.2.1      2024-03-01 [1] CRAN (R 4.3.3)</span></span>
+<span><span class="co">#&gt; #&gt;    DBI           1.2.2      2024-02-16 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    digest        0.6.35     2024-03-11 [1] CRAN (R 4.3.3)</span></span>
+<span><span class="co">#&gt; #&gt;    dplyr         1.1.4      2023-11-17 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    e1071         1.7-14     2023-12-06 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    evaluate      0.23       2023-11-01 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    fansi         1.0.6      2023-12-08 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    farver        2.1.1      2022-07-06 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    fastmap       1.1.1      2023-02-24 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    fs            1.6.3      2023-07-20 [1] CRAN (R 4.3.1)</span></span>
+<span><span class="co">#&gt; #&gt;    generics      0.1.3      2022-07-05 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    ggplot2     * 3.5.0      2024-02-23 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    glue          1.7.0      2024-01-09 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    gtable        0.3.4      2023-08-21 [1] CRAN (R 4.3.1)</span></span>
+<span><span class="co">#&gt; #&gt;    highr         0.10       2022-12-22 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    htmltools     0.5.8      2024-03-25 [1] CRAN (R 4.3.3)</span></span>
+<span><span class="co">#&gt; #&gt;  D KernSmooth    2.23-22    2023-07-10 [1] CRAN (R 4.3.3)</span></span>
+<span><span class="co">#&gt; #&gt;    knitr         1.45       2023-10-30 [1] CRAN (R 4.3.1)</span></span>
+<span><span class="co">#&gt; #&gt;    labeling      0.4.3      2023-08-29 [1] CRAN (R 4.3.1)</span></span>
+<span><span class="co">#&gt; #&gt;    lifecycle     1.0.4      2023-11-07 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    magrittr      2.0.3      2022-03-30 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    munsell       0.5.0      2018-06-12 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    pillar        1.9.0      2023-03-22 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    pkgconfig     2.0.3      2019-09-22 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    proxy         0.4-27     2022-06-09 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    purrr         1.0.2      2023-08-10 [1] CRAN (R 4.3.1)</span></span>
+<span><span class="co">#&gt; #&gt;    R.cache       0.16.0     2022-07-21 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    R.methodsS3   1.8.2      2022-06-13 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    R.oo          1.26.0     2024-01-24 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    R.utils       2.12.3     2023-11-18 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    R6            2.5.1      2021-08-19 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    Rcpp          1.0.12     2024-01-09 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    reprex        2.1.0.9000 2024-01-12 [1] Github (tidyverse/reprex@33ccedf)</span></span>
+<span><span class="co">#&gt; #&gt;    rlang         1.1.3      2024-01-10 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    rmarkdown     2.26       2024-03-05 [1] CRAN (R 4.3.3)</span></span>
+<span><span class="co">#&gt; #&gt;    rstudioapi    0.16.0     2024-03-24 [1] CRAN (R 4.3.3)</span></span>
+<span><span class="co">#&gt; #&gt;    scales        1.3.0      2023-11-28 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    sessioninfo   1.2.2      2021-12-06 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    sf          * 1.0-15     2023-12-18 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    styler        1.10.2     2023-08-29 [1] CRAN (R 4.3.1)</span></span>
+<span><span class="co">#&gt; #&gt;    tibble        3.2.1      2023-03-20 [1] CRAN (R 4.3.0)</span></span>
+<span><span class="co">#&gt; #&gt;    tidyselect    1.2.1      2024-03-11 [1] CRAN (R 4.3.3)</span></span>
+<span><span class="co">#&gt; #&gt;    units         0.8-5      2023-11-28 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    utf8          1.2.4      2023-10-22 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    vctrs         0.6.5.9000 2023-12-14 [1] Github (r-lib/vctrs@8bf5ba5)</span></span>
+<span><span class="co">#&gt; #&gt;    withr         3.0.0      2024-01-16 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    xfun          0.42       2024-02-08 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    xml2          1.3.6      2023-12-04 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;    yaml          2.3.8      2023-12-11 [1] CRAN (R 4.3.2)</span></span>
+<span><span class="co">#&gt; #&gt;</span></span>
+<span><span class="co">#&gt; #&gt;  [1] C:/Users/etienne/AppData/Local/Programs/R/R-4.3.3/library</span></span>
+<span><span class="co">#&gt; #&gt;</span></span>
+<span><span class="co">#&gt; #&gt;  D ── DLL MD5 mismatch, broken installation.</span></span>
+<span><span class="co">#&gt; #&gt;</span></span>
+<span><span class="co">#&gt; #&gt; ──────────────────────────────────────────────────────────────────────────────</span></span></code></pre></div>
+<p>We can “unprint” this output and get back a <code>session_info</code> object with the <code><a href="reference/unformat_session_info.html">unformat_session_info()</a></code> function:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">session_info_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/unformat_session_info.html">unformat_session_info</a></span><span class="op">(</span><span class="va">example_sessioninfo</span><span class="op">)</span></span></code></pre></div>
+<p>This <code>session_info</code> object can then be converted to a lockfile with the <code><a href="reference/as_lockfile.html">as_lockfile()</a></code> function:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/as_lockfile.html">as_lockfile</a></span><span class="op">(</span><span class="va">session_info_obj</span>, lockfile <span class="op">=</span> <span class="st">"renv.lock"</span><span class="op">)</span></span></code></pre></div>
+<p>Finally, this lockfile can be passed to <code><a href="https://rstudio.github.io/renv/reference/restore.html" class="external-link">renv::restore()</a></code> to recreate the R environment:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">renv</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/renv/reference/restore.html" class="external-link">restore</a></span><span class="op">(</span>lockfile <span class="op">=</span> <span class="st">"renv.lock"</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
