@@ -60,7 +60,7 @@ as_lockfile.session_info <- function(x, lockfile = stdout(), ...) {
       )
     )
 
-  if (any(pkgs$Source == "local")) {
+  if ("local" %in% pkgs$Source) {
     warning(
       "Some packages were installed from local sources which is not fully ",
       "reproducible. They will be dropped from the lockfile.",
